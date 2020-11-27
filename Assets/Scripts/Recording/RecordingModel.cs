@@ -6,9 +6,10 @@ namespace DefaultNamespace.Recording
     {
         public bool IsRecording;
         private AudioClip clip;
-
+        private float[] data = new float[]{};
         public void Record()
         {
+            
             var device = Microphone.devices[0];
             if (IsRecording)
             {
@@ -17,7 +18,8 @@ namespace DefaultNamespace.Recording
             else
             {
                 Microphone.End(device);
-                Debug.Log(clip.length);
+                clip.GetData(data, 0);
+                Debug.Log(data);
             }
         }
     }
