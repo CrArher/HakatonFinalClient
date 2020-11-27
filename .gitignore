@@ -58,3 +58,13 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+hakaton_final/Library/
+
+hakaton_final/Logs/
+
+hakaton_final/Temp/
+
+hakaton_final/UserSettings/
+
+hakaton_final/Packages/
