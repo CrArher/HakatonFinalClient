@@ -6,5 +6,6 @@ namespace DefaultNamespace.Recording
     public class RecordingComponent : MonoBehaviour
     {
         public Button Record;
+        public AudioSource AudioSource;
     }
 }
