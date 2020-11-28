@@ -1,5 +1,3 @@
-using DefaultNamespace;
-
 namespace ScreenObserver
 {
     public interface IScreenGenerator<TContext, TScreenContainer> where TContext : IGlobalContext

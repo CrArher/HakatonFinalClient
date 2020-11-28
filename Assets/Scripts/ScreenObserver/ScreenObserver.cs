@@ -1,5 +1,3 @@
-
-using DefaultNamespace;
 using ScreenManager.ScreenChanger;
 
 

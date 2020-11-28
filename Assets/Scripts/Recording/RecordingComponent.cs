@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace.Recording
+namespace Recording
 {
     public class RecordingComponent : MonoBehaviour
     {

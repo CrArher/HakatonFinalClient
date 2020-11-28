@@ -1,8 +1,5 @@
-﻿namespace DefaultNamespace
+﻿public interface IController
 {
-    public interface IController
-    {
-        void Deactivate();
-        void Activate();
-    }
+    void Deactivate();
+    void Activate();
 }

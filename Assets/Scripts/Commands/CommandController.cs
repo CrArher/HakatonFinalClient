@@ -1,5 +1,4 @@
 ﻿using Commands.Base;
-using DefaultNamespace;
 
 namespace Commands
 {

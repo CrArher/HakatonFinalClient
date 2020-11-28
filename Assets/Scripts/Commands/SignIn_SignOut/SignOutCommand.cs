@@ -1,6 +1,5 @@
 ﻿using System;
 using Commands.Base;
-using DefaultNamespace;
 using ScreenManager;
 using UnityEngine;
 using Utilities;
@@ -34,10 +33,9 @@ namespace Commands.SignIn_SignOut
                 {
                     PlayerPrefs.SetString("session", string.Empty);
                     PlayerPrefs.SetString("userId", string.Empty);
-                    // Context.UserModel.IsAuthorization = false;
-                    // Context.UserModel.Id = PlayerPrefs.GetString("userId");
-                    // Context.UserModel.IsLeader = false;
-                    // Context.ScreenChangerModel.SwitchScreen(ScreenType.StartScreen);   
+                    Context.User.IsAuthorization = false;
+                    Context.User.Id = PlayerPrefs.GetString("userId");
+                    Context.ScreenChangerModel.SwitchScreen(ScreenType.SignIn);   
                 }
             }
         }

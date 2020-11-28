@@ -1,6 +1,4 @@
-﻿using DefaultNamespace;
-
-namespace Commands
+﻿namespace Commands
 {
     public class CommandGenerator : IGenerator
     {

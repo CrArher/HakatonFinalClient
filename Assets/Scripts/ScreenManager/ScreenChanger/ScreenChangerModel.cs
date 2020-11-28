@@ -32,20 +32,11 @@ namespace ScreenManager.ScreenChanger
             }
         }
 
-
         private IEnumerable<ScreenType> GetScreen()
         {
-            yield return ScreenType.LeaderPricing;
-            yield return ScreenType.LeaderSignUp;
-            yield return ScreenType.LeaderNewGame;
-            yield return ScreenType.LeaderGame;
-            yield return ScreenType.PlayerEnter;
-            yield return ScreenType.StartScreen;
-            yield return ScreenType.InfoScreen;
-            yield return ScreenType.LeaderSignIn;
-            yield return ScreenType.Admin;
-            yield return ScreenType.PlayerGame;
-            yield return ScreenType.LoadScreen;
+            yield return ScreenType.MainScreen;
+            yield return ScreenType.Registration;
+            yield return ScreenType.SignIn;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Commands.Base;
-using DefaultNamespace;
 using ScreenManager;
 using UnityEngine;
 using UnityEngine.Android;
@@ -9,9 +8,9 @@ namespace Commands.SignIn_SignOut
 {
     public class UserSignInCommand : ExecuteCommand
     {
-        public UserSignInCommand(string email,string password) : base(nameof(UserSignInCommand))
+        public UserSignInCommand(string email, string password) : base(nameof(UserSignInCommand))
         {
-            UserParams.Add("email",email);
+            UserParams.Add("email", email);
             UserParams.Add("password", password);
         }
 
@@ -33,19 +32,10 @@ namespace Commands.SignIn_SignOut
                 // Context.UserModel.Permission = Recieve.GetString("permission");
                 PlayerPrefs.SetString("session", Recieve.GetString("session"));
                 PlayerPrefs.SetString("userId", Recieve.GetString("userId"));
-                // Context.UserModel.IsAuthorization = true;
-                // Context.UserModel.Id = PlayerPrefs.GetString("userId");
-                // Context.UserModel.IsLeader = true;
-                // if (Context.UserModel.Permission == "Admin")
-                // {
-                //     Context.ScreenChangerModel.SwitchScreen(ScreenType.Admin);
-                // }
-                // else
-                // {
-                //     Context.UserModel.IsLeader = true;
-                //     Context.ScreenChangerModel.SwitchScreen(ScreenType.LeaderPricing);    
-                // }
+                Context.User.IsAuthorization = true;
+                Context.User.Id = PlayerPrefs.GetString("userId");
+                Context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);               
             }
         }
     }
-};
+}

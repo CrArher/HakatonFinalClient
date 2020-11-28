@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using UnityEngine;
 
-namespace DefaultNamespace.Recording
+namespace Recording
 {
     public class RecordingController : IController
     {

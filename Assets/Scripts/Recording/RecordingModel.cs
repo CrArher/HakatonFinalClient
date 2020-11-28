@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Recording
+namespace Recording
 {
     public class RecordingModel
     {
