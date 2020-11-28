@@ -10,9 +10,7 @@ namespace Screens.RecordingScreen.Platforms
         public Spotify(Dictionary<string, object> data)
         {
             ReleaseDate = data.GetNode("album").GetString("release_date");
-            ImageUrl = data.GetNode("album").GetNode("images").GetNode("0").GetString("url");
+            ImageUrl = ((Dictionary<string, object>)data.GetNode("album").GetArrayObject("images")[1]).GetString("url");
         }
-        
-        
     }
 }

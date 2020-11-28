@@ -7,7 +7,7 @@ namespace Screens.RecordingScreen.Platforms
     {
         public Apple(Dictionary<string, object> data)
         {
-            Genre = data.GetStringArray("genreNames").ToString();
+            Genre = data.GetStringArray("genreNames");
             ReleaseDate = data.GetString("releaseDate");
             ImageUrl = data.GetNode("artwork").GetString("url");
         }

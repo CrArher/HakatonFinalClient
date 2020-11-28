@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Screens.RecordingScreen.Platforms
 {
@@ -8,19 +11,27 @@ namespace Screens.RecordingScreen.Platforms
        public string Artist { get; set; }
        public string Title { get; set; }
        public string Album { get; set; }
-       public string Genre { get; protected set; }
+       public List<string> Genre { get; protected set; }
        public string ReleaseDate { get; protected set; }
        public string Label { get; set; }
        public string TrackLink { get; set; }
        public string ImageUrl { get; protected set; }
        public Texture2D Image { get; set; }
        
-       public async Task SetImage() 
+       public IEnumerator GetTexture() 
        {
-           WWW www = new WWW(ImageUrl);
-           www.LoadImageIntoTexture(Image);
-           www.Dispose();
-           www = null;
+           var www = UnityWebRequestTexture.GetTexture(ImageUrl);
+           
+           yield return www.SendWebRequest();
+
+           if(www.isNetworkError || www.isHttpError) 
+           {
+               Debug.Log(www.error);
+           }
+           else 
+           {
+               Image = ((DownloadHandlerTexture)www.downloadHandler).texture;
+           }
        }
     }
 }
