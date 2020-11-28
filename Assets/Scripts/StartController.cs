@@ -14,6 +14,7 @@ public class StartController : MonoBehaviour
         new CommandGenerator().Generate(_context, _controllerCollection, GlobalContainer);
         new ScreenChangerGenerator().Generate(_context, _controllerCollection, GlobalContainer);
         
+
         _controllerCollection.Activate();
     }
 }

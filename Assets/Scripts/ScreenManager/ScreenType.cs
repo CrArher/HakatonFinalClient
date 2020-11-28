@@ -4,6 +4,7 @@
     {
         Registration,
         SignIn,
-        MainScreen
+        MainScreen,
+        Recording
     }
 }

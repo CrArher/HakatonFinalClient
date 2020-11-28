@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Screens.ScreenObserver;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Screens.RecordingScreen
 {
-    public class RecordingComponent : MonoBehaviour
+    public class RecordingComponent : MonoBehaviour, ISceneContainer
     {
+        public Button Record;
+        public AudioSource AudioSource;
+
+        
         private float period = 0.03f;
         private float time;
         private List<bool> _enablers = new List<bool>();
