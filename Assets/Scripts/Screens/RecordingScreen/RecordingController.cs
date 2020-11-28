@@ -31,7 +31,7 @@ namespace Screens.RecordingScreen
             _component.Record.onClick.AddListener(OnRecord);
             _component.EndTimer += OnEndTimer;
         }
-        
+
         private void OnRecord()
         {
             try
@@ -41,19 +41,20 @@ namespace Screens.RecordingScreen
                 Debug.Log(_model.IsRecording);
                 if (_model.IsRecording)
                 {
-                    _model.clip = Microphone.Start(_component.Device,false,7,80000);
+                    _model.clip = Microphone.Start(_component.Device, false, 7, 80000);
                     _component.EnableTimer();
                 }
                 else
                 {
                     Microphone.End(_component.Device);
                 }
+
                 Debug.Log(_model.IsRecording);
 
                 if (!_model.IsRecording)
                 {
                     _component.IsEnableTimer = false;
-                    SavWav.Save("TEST",_model.clip,_component.TEXT);
+                    SavWav.Save("TEST", _model.clip, EndFind);
                 }
             }
             catch (Exception e)
@@ -63,7 +64,11 @@ namespace Screens.RecordingScreen
                 throw;
             }
         }
-        
+
+        private void EndFind(string result)
+        {
+        }
+
         private void OnEndTimer()
         {
             Debug.Log("END TIMER");

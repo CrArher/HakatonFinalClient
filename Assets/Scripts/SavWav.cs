@@ -11,7 +11,7 @@ public static class SavWav
 {
     const int HEADER_SIZE = 44;
 
-    public static void Save(string filename, AudioClip clip, TextMeshProUGUI componentText)
+    public static void Save(string filename, AudioClip clip, Action<string> componentText)
     {
         if (!filename.ToLower().EndsWith(".wav"))
         {
@@ -83,7 +83,7 @@ public static class SavWav
     }
 
 
-    private static void Uploads(byte[] paramFileBytes, TextMeshProUGUI componentText)
+    private static void Uploads(byte[] paramFileBytes, Action<string> componentText)
     {
         var postParameters = new Dictionary<string, object>();
         postParameters.Add("file", new FileParameter(paramFileBytes, "file", "application/octet-stream"));
@@ -98,9 +98,10 @@ public static class SavWav
         var fullResponse = responseReader.ReadToEnd();
         Debug.Log(fullResponse);
         webResponse.Close();
-        componentText.text = fullResponse;
+        componentText?.Invoke(fullResponse);
     }
 
+    
 
     static void WriteHeader(FileStream fileStream, AudioClip clip)
     {
