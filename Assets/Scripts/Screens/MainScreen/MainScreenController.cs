@@ -18,6 +18,7 @@ namespace Screens.MainScreen
         public void Deactivate()
         {
             _component.RecordScreenButton.onClick.RemoveListener(OnClickRecordScreen);
+            _model.Find -= OnFind;
         }
 
         public void Activate()
@@ -31,6 +32,7 @@ namespace Screens.MainScreen
             var color = _component.DefaultBackground.color;
             color.a -= 0.2f;
             _component.DefaultBackground.color = color;
+            OnClickRecordScreen();
 
             _component.Image.texture = _model.Image;
             _component.BackGround.texture = _model.Image;
@@ -38,7 +40,7 @@ namespace Screens.MainScreen
             _component.album.text = _model.Album;
             _component.link.text = _model.Link;
             _component.title.text = _model.Title;
-            
+
             _component.BackGround.gameObject.SetActive(true);
             _component.Image.gameObject.SetActive(true);
         }

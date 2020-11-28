@@ -7,6 +7,7 @@ namespace Screens.RecordingScreen
     {
         public event Action Show;
         public event Action Hide;
+
         public bool IsRecording;
         public AudioClip clip;
 

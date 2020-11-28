@@ -147,7 +147,6 @@ namespace Screens.RecordingScreen
                             _context.MainScreenModel.Image = apple.Image;
                             _context.MainScreenModel.Link = apple.TrackLink;
                             _context.MainScreenModel.Title = apple.Title;
-                            _context.MainScreenModel.OnFind();
                         }
                         else if (deezer != null)
                         {
@@ -156,7 +155,6 @@ namespace Screens.RecordingScreen
                             _context.MainScreenModel.Image = deezer.Image;
                             _context.MainScreenModel.Link = deezer.TrackLink;
                             _context.MainScreenModel.Title = deezer.Title;
-                            _context.MainScreenModel.OnFind();
                         }
                         else if (spotify != null)
                         {
@@ -165,8 +163,8 @@ namespace Screens.RecordingScreen
                             _context.MainScreenModel.Image = spotify.Image;
                             _context.MainScreenModel.Link = spotify.TrackLink;
                             _context.MainScreenModel.Title = spotify.Title;
-                            _context.MainScreenModel.OnFind();
                         }
+                        _context.MainScreenModel.OnFind();
                     }
                 }
             }
