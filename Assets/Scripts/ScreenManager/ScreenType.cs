@@ -5,6 +5,5 @@
         Registration,
         SignIn,
         MainScreen,
-        Recording
     }
 }

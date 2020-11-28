@@ -46,10 +46,10 @@ namespace Screens.ScreenObserver
                     break;
                 case ScreenType.MainScreen:
                     new MainScreenGenerator().Generate(_context, _container.MainScreenComponent, _controllerCollection);
-                    break;
-                case ScreenType.Recording:
                     new RecordingGenerator().Generate(_context,_container.RecordingComponent,_controllerCollection);
                     break;
+                
+                    
             }
 
             _controllerCollection.Activate();

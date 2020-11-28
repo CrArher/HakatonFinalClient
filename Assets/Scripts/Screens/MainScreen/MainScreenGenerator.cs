@@ -6,7 +6,9 @@ namespace Screens.MainScreen
     {
         public void Generate(GlobalContext context, MainScreenComponent container, ControllerCollection collection)
         {
-            var controller = new MainScreenController(context, container);
+            var model = new MainScreenModel();
+            context.MainScreenModel = model;
+            var controller = new MainScreenController(context,model, container);
             collection.Add(controller);
         }
     }

@@ -35,7 +35,6 @@ namespace Screens.ScreenChanger
         private IEnumerable<ScreenType> GetScreen()
         {
             yield return ScreenType.MainScreen;
-            yield return ScreenType.Recording;
             yield return ScreenType.Registration;
             yield return ScreenType.SignIn;
         }

@@ -1,4 +1,5 @@
 ﻿using Commands;
+using Screens.MainScreen;
 using Screens.RecordingScreen;
 using Screens.ScreenChanger;
 using UnityEngine;
@@ -23,4 +24,5 @@ public class GlobalContext : IGlobalContext
     public UserModel User { get; set; }
 
     public RecordingModel RecordingModel { get; set; }
+    public MainScreenModel MainScreenModel { get; set; }
 }

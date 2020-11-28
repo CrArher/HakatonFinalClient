@@ -10,10 +10,12 @@ namespace Screens.RecordingScreen
 {
     public class RecordingComponent : MonoBehaviour, ISceneContainer
     {
+        [NonSerialized] public bool StartShow;
+        public GameObject root;
+        
         public Action EndTimer;
         
         public Button Record;
-        public AudioSource AudioSource;
 
         public string Device;
         private float period = 0.03f;
@@ -32,7 +34,6 @@ namespace Screens.RecordingScreen
         private List<bool> _enablers = new List<bool>();
         [NonSerialized] public bool IsRecording = false;
         public List<Image> rounds;
-        public TextMeshProUGUI TEXT;
         public void Start()
         {
             Device = Microphone.devices[0];
@@ -86,6 +87,28 @@ namespace Screens.RecordingScreen
                     }
                 }
             }
+
+            if (StartShow)
+            {
+                if (time <= 0 && root.transform.localPosition.y <0)
+                {
+                    var pos = root.transform.localPosition;
+                    pos.y += 12;
+                    root.transform.localPosition = pos;
+                }
+            }
+            else
+            {
+                if (time<=0&& root.transform.localPosition.y > -800-root.GetComponentInParent<RectTransform>().rect.height)
+                {
+                    
+                    var pos = root.transform.localPosition;
+                    pos.y -= 12;
+                    root.transform.localPosition = pos;
+                }
+            }
+            
+            
         }
     }
 }

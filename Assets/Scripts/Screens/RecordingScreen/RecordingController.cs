@@ -31,8 +31,20 @@ namespace Screens.RecordingScreen
 
         public void Activate()
         {
+            _model.Hide += OnHide;
+            _model.Show += OnShow;
             _component.Record.onClick.AddListener(OnRecord);
             _component.EndTimer += OnEndTimer;
+        }
+
+        private void OnShow()
+        {
+            _component.StartShow = true;
+        }
+
+        private void OnHide()
+        {
+            _component.StartShow = false;
         }
 
         private void OnRecord()
@@ -63,7 +75,6 @@ namespace Screens.RecordingScreen
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                _component.TEXT.text = e.Message;
                 throw;
             }
         }
@@ -117,6 +128,31 @@ namespace Screens.RecordingScreen
                 spotify.Artist = artist;
                 spotify.TrackLink = trackLink;
                 spotify.SetImage();
+            }
+
+            if (apple!=null)
+            {
+                _context.MainScreenModel.Album = apple.Album;
+                _context.MainScreenModel.Author = apple.Artist;
+                _context.MainScreenModel.Image = apple.Image;
+                _context.MainScreenModel.Link = apple.TrackLink;
+                _context.MainScreenModel.Title = apple.Title;
+            }
+            else if(deezer!=null)
+            {
+                _context.MainScreenModel.Album = deezer.Album;
+                _context.MainScreenModel.Author = deezer.Artist;
+                _context.MainScreenModel.Image = deezer.Image;
+                _context.MainScreenModel.Link = deezer.TrackLink;
+                _context.MainScreenModel.Title = deezer.Title;
+            }
+            else if(spotify != null)
+            {
+                _context.MainScreenModel.Album = spotify.Album;
+                _context.MainScreenModel.Author = spotify.Artist;
+                _context.MainScreenModel.Image = spotify.Image;
+                _context.MainScreenModel.Link = spotify.TrackLink;
+                _context.MainScreenModel.Title = spotify.Title;
             }
         }
 
