@@ -1,4 +1,6 @@
-﻿namespace Screens.MainScreen
+﻿using ScreenManager;
+
+namespace Screens.MainScreen
 {
     public class MainScreenController : IController
     {
@@ -13,12 +15,17 @@
         
         public void Deactivate()
         {
-            
+            _component.RecordScreenButton.onClick.RemoveListener(OnClickRecordScreen);
         }
 
         public void Activate()
         {
-            
+            _component.RecordScreenButton.onClick.AddListener(OnClickRecordScreen);
+        }
+
+        private void OnClickRecordScreen()
+        {
+            _context.ScreenChangerModel.SwitchScreen(ScreenType.Recording);
         }
     }
 }

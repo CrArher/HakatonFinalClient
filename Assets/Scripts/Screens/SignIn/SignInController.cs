@@ -41,8 +41,6 @@ namespace Screens.SignIn
         private void OnClickRegister()
         {
             _context.ScreenChangerModel.SwitchScreen(ScreenType.Registration);
-            
-            
         }
 
         private void Callback(bool value)

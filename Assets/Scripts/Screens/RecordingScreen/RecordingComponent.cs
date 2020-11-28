@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Screens.ScreenObserver;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,18 +10,32 @@ namespace Screens.RecordingScreen
 {
     public class RecordingComponent : MonoBehaviour, ISceneContainer
     {
+        public Action EndTimer;
+        
         public Button Record;
         public AudioSource AudioSource;
 
-        
+        public string Device;
         private float period = 0.03f;
         private float time;
-        private List<bool> _enablers = new List<bool>();
-        [NonSerialized] public bool IsRecording = true;
-        public List<Image> rounds;
+        
+        private float periodTimer = 5f;
+        private float timeTimer;
+        private bool _enableTimer;
 
+        public void EnableTimer()
+        {
+            timeTimer = periodTimer;
+            _enableTimer = true;
+        }
+
+        private List<bool> _enablers = new List<bool>();
+        [NonSerialized] public bool IsRecording = false;
+        public List<Image> rounds;
+        public TextMeshProUGUI TEXT;
         public void Start()
         {
+            Device = Microphone.devices[0];
             foreach (var round in rounds)
             {
                 _enablers.Add(new bool());
@@ -30,6 +45,14 @@ namespace Screens.RecordingScreen
         public void Update()
         {
             time -= Time.deltaTime;
+            timeTimer -= Time.deltaTime;
+
+            if (timeTimer <= 0 && _enableTimer)
+            {
+                timeTimer = periodTimer;
+                _enableTimer = false;
+                EndTimer?.Invoke();
+            }
             
             while (IsRecording && time<=0)
             {
