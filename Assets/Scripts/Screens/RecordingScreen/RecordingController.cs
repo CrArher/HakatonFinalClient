@@ -41,7 +41,7 @@ namespace Screens.RecordingScreen
                 Debug.Log(_model.IsRecording);
                 if (_model.IsRecording)
                 {
-                    _model.clip = Microphone.Start(_component.Device,false,5,80000);
+                    _model.clip = Microphone.Start(_component.Device,false,7,80000);
                     _component.EnableTimer();
                 }
                 else
@@ -52,7 +52,7 @@ namespace Screens.RecordingScreen
 
                 if (!_model.IsRecording)
                 {
-                    Debug.Log(_model.IsRecording);
+                    _component.IsEnableTimer = false;
                     SavWav.Save("TEST",_model.clip,_component.TEXT);
                 }
             }
@@ -62,11 +62,9 @@ namespace Screens.RecordingScreen
                 _component.TEXT.text = e.Message;
                 throw;
             }
-            
         }
-
         
-        public void OnEndTimer()
+        private void OnEndTimer()
         {
             Debug.Log("END TIMER");
             OnRecord();

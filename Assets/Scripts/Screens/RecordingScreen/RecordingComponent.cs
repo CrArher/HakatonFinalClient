@@ -19,14 +19,14 @@ namespace Screens.RecordingScreen
         private float period = 0.03f;
         private float time;
         
-        private float periodTimer = 5f;
+        private float periodTimer = 7f;
         private float timeTimer;
-        private bool _enableTimer;
+        public bool IsEnableTimer;
 
         public void EnableTimer()
         {
             timeTimer = periodTimer;
-            _enableTimer = true;
+            IsEnableTimer = true;
         }
 
         private List<bool> _enablers = new List<bool>();
@@ -47,10 +47,10 @@ namespace Screens.RecordingScreen
             time -= Time.deltaTime;
             timeTimer -= Time.deltaTime;
 
-            if (timeTimer <= 0 && _enableTimer)
+            if (timeTimer <= 0 && IsEnableTimer)
             {
                 timeTimer = periodTimer;
-                _enableTimer = false;
+                IsEnableTimer = false;
                 EndTimer?.Invoke();
             }
             
