@@ -46,8 +46,6 @@ namespace Screens.MainScreen
         private void OnClickRecordScreen()
         {
             _component.IsRecord = !_component.IsRecord;
-            _component.Show.gameObject.SetActive(!_component.IsRecord);
-            _component.Hide.gameObject.SetActive(_component.IsRecord);
             _context.RecordingModel.OnShowOrHide(_component.IsRecord);
         }
     }

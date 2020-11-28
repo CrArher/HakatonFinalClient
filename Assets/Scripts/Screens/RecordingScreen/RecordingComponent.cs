@@ -12,6 +12,8 @@ namespace Screens.RecordingScreen
     {
         [NonSerialized] public bool StartShow;
         public GameObject root;
+
+        public Image Monkey;
         
         public Action EndTimer;
         
@@ -96,15 +98,24 @@ namespace Screens.RecordingScreen
                     pos.y += 12;
                     root.transform.localPosition = pos;
                 }
+                if (time <= 0 && Math.Abs(Monkey.transform.eulerAngles.z - (45)) > 5f) 
+                {
+                    Monkey.transform.Rotate(0,0,3f);
+                }
             }
             else
             {
                 if (time<=0&& root.transform.localPosition.y > -800-root.GetComponentInParent<RectTransform>().rect.height)
                 {
-                    
                     var pos = root.transform.localPosition;
                     pos.y -= 12;
                     root.transform.localPosition = pos;
+                    
+                }
+
+                if (time <= 0 && Math.Abs(Monkey.transform.eulerAngles.z - (225)) > 5f) 
+                {
+                    Monkey.transform.Rotate(0,0,-3f);
                 }
             }
             

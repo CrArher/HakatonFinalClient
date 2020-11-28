@@ -15,15 +15,12 @@ namespace Screens.MainScreen
         public TextMeshProUGUI title;
         public TextMeshProUGUI album;
         public TextMeshProUGUI link;
-        
-        
-        
+
+
         private float period = 0.02f;
         private float time;
-        public Image Show;
-        public Image Hide;
-        [NonSerialized]public bool IsRecord;
-        
+        [NonSerialized] public bool IsRecord;
+
         public Button RecordScreenButton;
 
         public void Update()
@@ -34,7 +31,7 @@ namespace Screens.MainScreen
                 if (time<=0)
                 {
                     time = period;
-                    if (RecordScreenButton.transform.localScale.x>0.5)
+                    if (RecordScreenButton.transform.localScale.x>-1)
                     {
                         var scale = RecordScreenButton.transform.localScale;
                         scale.x -= 0.1f;
