@@ -1,5 +1,5 @@
 ﻿using Commands;
-using ScreenManager.ScreenChanger;
+using Screens.ScreenChanger;
 using UnityEngine;
 
 public class GlobalContext : IGlobalContext

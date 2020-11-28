@@ -1,7 +1,8 @@
-﻿using ScreenManager;
+﻿using Screens.ScreenObserver;
 using UnityEngine;
 
 public class GlobalContainer : MonoBehaviour
 {
-    public Screens Screens { get; set; }
+    public ScreenManager.Screens Screens;
+    public ScreensContainer ScreensContainer;
 }
