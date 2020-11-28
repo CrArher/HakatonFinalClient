@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Screens.RecordingScreen;
 using Screens.ScreenObserver;
 using TMPro;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace Screens.MainScreen
         public GameObject FreePlayLists;
 
         public TMP_InputField FindField;
-        
+
         public RawImage BackGround;
         public RawImage Image;
         public Image DefaultBackground;
@@ -34,24 +34,33 @@ namespace Screens.MainScreen
             time -= Time.deltaTime;
             if (IsRecord)
             {
-                if (time<=0)
+                if (time <= 0)
                 {
                     time = period;
-                    if (RecordScreenButton.transform.localScale.x>-1)
+                    if (RecordScreenButton.transform.localScale.x > -1)
                     {
                         var scale = RecordScreenButton.transform.localScale;
                         scale.x -= 0.1f;
                         scale.y -= 0.1f;
                         RecordScreenButton.transform.localScale = scale;
-                    }    
+                    }
                 }
             }
             else
             {
-                if (time<=0)
+                if (time <= 0)
                 {
+                    if (this.GetComponent<RecordingComponent>().root.transform.position.y < -900 &&
+                        !SearchesHistoryRoot.gameObject.activeSelf && !FreePlayLists.gameObject.activeSelf &&
+                        !FindField.gameObject.activeSelf)
+                    {
+                        SearchesHistoryRoot.gameObject.SetActive(true);
+                        FreePlayLists.gameObject.SetActive(true);
+                        FindField.gameObject.SetActive(true);
+                    }
+
                     time = period;
-                    if (RecordScreenButton.transform.localScale.x<1)
+                    if (RecordScreenButton.transform.localScale.x < 1)
                     {
                         var scale = RecordScreenButton.transform.localScale;
                         scale.x += 0.1f;

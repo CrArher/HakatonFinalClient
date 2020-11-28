@@ -62,11 +62,12 @@ namespace Screens.MainScreen
                 _context.BurgerMenuModel.OnHide();
                 _component.SearchesHistoryRoot.gameObject.SetActive(false);
                 _component.FreePlayLists.gameObject.SetActive(false);
+                _component.FindField.gameObject.SetActive(false);
             }
             else
             {
-                _component.SearchesHistoryRoot.gameObject.SetActive(true);
-                _component.FreePlayLists.gameObject.SetActive(true);
+            //     _component.SearchesHistoryRoot.gameObject.SetActive(true);
+            //     _component.FreePlayLists.gameObject.SetActive(true);
             }
         }
     }
