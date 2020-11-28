@@ -17,6 +17,7 @@ namespace ScreenManager
 
         public void OnAfterDeserialize()
         {
+            Roots.Clear();
             foreach (var window in windows)
             {
                 Roots.Add(window.Type, window.Root);
