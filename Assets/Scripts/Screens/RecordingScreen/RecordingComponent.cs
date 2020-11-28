@@ -11,8 +11,7 @@ namespace Screens.RecordingScreen
         private float period = 0.03f;
         private float time;
         private List<bool> _enablers = new List<bool>();
-        [NonSerialized]public bool IsRecording = true; 
-        private int _currentStep = 0;
+        [NonSerialized] public bool IsRecording = true;
         public List<Image> rounds;
 
         public void Start()
