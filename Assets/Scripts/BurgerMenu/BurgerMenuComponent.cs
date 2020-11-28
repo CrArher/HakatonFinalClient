@@ -5,12 +5,16 @@ using UnityEngine.UI;
 
 namespace BurgerMenu
 {
-    public class BurgerMenuComponent : MonoBehaviour,IPointerDownHandler
+    public class BurgerMenuComponent : MonoBehaviour, IPointerDownHandler
     {
+        private float speed = 30f;
+        private bool Jumping;
+        private int jump = 0;
         private float period = 0.03f;
         private float time;
         private bool OnStart;
         public Image Root;
+
         public void OnPointerDown(PointerEventData eventData)
         {
             OnStart = !OnStart;
@@ -25,33 +29,50 @@ namespace BurgerMenu
             time -= Time.deltaTime;
             if (OnStart)
             {
-                if (Root.transform.localScale.x <15 && time<=0)
+                if (time <= 0)
                 {
-                    var scale = Root.transform.localScale;
-                    scale.x += 1;
-                    scale.y += 1;
-                    Root.transform.localScale = scale;
+                    time = period;
+                    if (Root.transform.position.y > 1000 - Root.rectTransform.rect.height / 2 && !Jumping)
+                    {
+                        var vector = Root.transform.position;
+                        vector.y -= speed;
+                        Root.transform.position = vector;
+                    }
+                    else
+                    {
+                        if (jump < 0)
+                        {
+                            Jumping = true;
+                            if (Root.transform.position.y <
+                                1000 - Root.rectTransform.rect.height / 2 + 100 / (1 + jump))
+                            {
+                                var vector = Root.transform.position;
+                                vector.y += speed;
+                                speed -= 1f;
+                                Root.transform.position = vector;
+                            }
+                            else
+                            {
+                                Jumping = false;
+                                jump++;
+                            }
+                        }
+                    }
                 }
             }
             else
             {
-                if (Root.transform.localScale.x>1)
+                if (time <= 0)
                 {
-                    if (time<=0)
+                    time = period;
+                    if (Root.transform.position.y < 1100 + Root.rectTransform.rect.height / 2 && !Jumping)
                     {
-                        var scale = Root.transform.localScale;
-                        scale.x -= 1;
-                        scale.y -= 1;
-                        Root.transform.localScale = scale;
+                        var vector = Root.transform.position;
+                        vector.y += speed;
+                        Root.transform.position = vector;
                     }
                 }
-                else
-                {
-                    Root.gameObject.SetActive(false);
-                }
-                
             }
-            
         }
     }
 }

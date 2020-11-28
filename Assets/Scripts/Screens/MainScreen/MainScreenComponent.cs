@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Screens.ScreenObserver;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,9 @@ namespace Screens.MainScreen
 {
     public class MainScreenComponent : MonoBehaviour, ISceneContainer
     {
+        public GameObject SearchesHistoryRoot;
+        public GameObject FreePlayLists;
+        
         public RawImage BackGround;
         public RawImage Image;
         public Image DefaultBackground;

@@ -49,6 +49,17 @@ namespace Screens.MainScreen
         {
             _component.IsRecord = !_component.IsRecord;
             _context.RecordingModel.OnShowOrHide(_component.IsRecord);
+            if (_component.IsRecord)
+            {
+                _context.BurgerMenuModel.OnHide();
+                _component.SearchesHistoryRoot.gameObject.SetActive(false);
+                _component.FreePlayLists.gameObject.SetActive(false);
+            }
+            else
+            {
+                _component.SearchesHistoryRoot.gameObject.SetActive(true);
+                _component.FreePlayLists.gameObject.SetActive(true);
+            }
         }
     }
 }

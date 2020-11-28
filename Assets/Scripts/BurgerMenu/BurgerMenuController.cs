@@ -5,11 +5,13 @@ namespace BurgerMenu
     public class BurgerMenuController : IController
     {
         private readonly GlobalContext _context;
+        private readonly BurgerMenuModel _model;
         private readonly BurgerMenuComponent _component;
 
-        public BurgerMenuController(GlobalContext context,BurgerMenuComponent component)
+        public BurgerMenuController(GlobalContext context,BurgerMenuModel model,BurgerMenuComponent component)
         {
             _context = context;
+            _model = model;
             _component = component;
         }
         public void Deactivate()

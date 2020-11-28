@@ -1,4 +1,5 @@
-﻿using Commands;
+﻿using BurgerMenu;
+using Commands;
 using Screens.ScreenChanger;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class StartController : MonoBehaviour
         _context.Mono = this;
         new CommandGenerator().Generate(_context, _controllerCollection, GlobalContainer);
         new ScreenChangerGenerator().Generate(_context, _controllerCollection, GlobalContainer);
-        
+        new BurgerMenuGenerator().Generate(_context,_controllerCollection,GlobalContainer);
 
         _controllerCollection.Activate();
     }

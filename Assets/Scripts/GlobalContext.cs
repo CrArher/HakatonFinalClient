@@ -1,5 +1,7 @@
-﻿using Commands;
+﻿using BurgerMenu;
+using Commands;
 using Screens.MainScreen;
+
 using Screens.RecordingScreen;
 using Screens.ScreenChanger;
 using UnityEngine;
@@ -25,4 +27,5 @@ public class GlobalContext : IGlobalContext
 
     public RecordingModel RecordingModel { get; set; }
     public MainScreenModel MainScreenModel { get; set; }
+    public BurgerMenuModel BurgerMenuModel { get; set; }
 }

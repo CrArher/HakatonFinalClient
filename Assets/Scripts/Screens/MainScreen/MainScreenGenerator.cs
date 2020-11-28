@@ -1,4 +1,5 @@
-﻿using Screens.ScreenObserver;
+﻿
+using Screens.ScreenObserver;
 
 namespace Screens.MainScreen
 {
@@ -10,6 +11,7 @@ namespace Screens.MainScreen
             context.MainScreenModel = model;
             var controller = new MainScreenController(context,model, container);
             collection.Add(controller);
+            
         }
     }
 }
