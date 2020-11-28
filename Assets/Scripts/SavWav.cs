@@ -83,25 +83,28 @@ public static class SavWav
     }
 
 
-    private static void Uploads(byte[] paramFileBytes, Action<string> componentText)
+    private static async void Uploads(byte[] paramFileBytes, Action<string> componentText)
     {
         var postParameters = new Dictionary<string, object>();
         postParameters.Add("file", new FileParameter(paramFileBytes, "file", "application/octet-stream"));
         postParameters.Add("api_token", "e1d593768b4a52f1f6229de45d64cd2d");
         postParameters.Add("return", "timecode,apple_music,deezer,spotify");
 
-        string postURL = "https://api.audd.io/recognize";
-        string userAgent = "Someone";
-        HttpWebResponse webResponse = FormUpload.MultipartFormDataPost(postURL, userAgent, postParameters);
-
-        StreamReader responseReader = new StreamReader(webResponse.GetResponseStream());
+        var postURL = "https://api.audd.io/recognize";
+        var userAgent = "Someone";
+        
+        var webResponse = FormUpload.MultipartFormDataPost(postURL, userAgent, postParameters);
+        
+        var stream = webResponse.GetResponseStream();
+        
+        var responseReader = new StreamReader(stream);
+        
         var fullResponse = responseReader.ReadToEnd();
-        Debug.Log(fullResponse);
+        
         webResponse.Close();
         componentText?.Invoke(fullResponse);
     }
 
-    
 
     static void WriteHeader(FileStream fileStream, AudioClip clip)
     {

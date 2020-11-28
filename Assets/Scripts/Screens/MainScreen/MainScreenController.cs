@@ -1,4 +1,5 @@
-﻿using ScreenManager;
+﻿using Commands;
+using ScreenManager;
 
 namespace Screens.MainScreen
 {
@@ -18,13 +19,20 @@ namespace Screens.MainScreen
         public void Deactivate()
         {
             _component.RecordScreenButton.onClick.RemoveListener(OnClickRecordScreen);
+            _component.FindField.onSubmit.RemoveListener(OnSubmitFind);
             _model.Find -= OnFind;
         }
 
         public void Activate()
         {
             _component.RecordScreenButton.onClick.AddListener(OnClickRecordScreen);
+            _component.FindField.onSubmit.AddListener(OnSubmitFind);
             _model.Find += OnFind;
+        }
+
+        private void OnSubmitFind(string arg0)
+        {
+            _context.CommandModel.AddCommand(new GetYouTubeVideoInfoCommand(arg0));
         }
 
         private void OnFind()

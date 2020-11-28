@@ -1,4 +1,6 @@
 ﻿using Commands.Base;
+using UnityEngine;
+using Utilities;
 
 namespace Commands
 {
@@ -20,7 +22,7 @@ namespace Commands
 
         protected override void CallBack()
         {
-            
+            Debug.Log(Recieve.GetString("callback"));
         }
     }
 }

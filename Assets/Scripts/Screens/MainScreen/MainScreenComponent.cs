@@ -11,6 +11,8 @@ namespace Screens.MainScreen
     {
         public GameObject SearchesHistoryRoot;
         public GameObject FreePlayLists;
+
+        public TMP_InputField FindField;
         
         public RawImage BackGround;
         public RawImage Image;
