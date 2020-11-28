@@ -1,4 +1,6 @@
-﻿using ScreenManager;
+﻿using Commands.Registration;
+using ScreenManager;
+using UnityEngine;
 
 namespace Screens.Registration
 {
@@ -16,11 +18,30 @@ namespace Screens.Registration
         public void Deactivate()
         {
             _container.SignInButton.onClick.RemoveListener(OnClickSignIn);
+            _container.Registration.onClick.RemoveListener(OnClickRegistration);
         }
 
         public void Activate()
         {
             _container.SignInButton.onClick.AddListener(OnClickSignIn);
+            _container.Registration.onClick.AddListener(OnClickRegistration);
+        }
+
+        private void OnClickRegistration()
+        {
+            _context.CommandModel.AddCommand(new RegistrationCommand(_container.LoginField.text, _container.EmailField.text,
+                _container.PasswordField.text, OnRegistrationCallback));
+        }
+
+        private void OnRegistrationCallback(bool value)
+        {
+            if (value)
+            {
+                _context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);
+            }
+            else
+            {
+            }
         }
 
         private void OnClickSignIn()

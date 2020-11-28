@@ -1,15 +1,18 @@
-﻿using Commands.Base;
+﻿using System;
+using Commands.Base;
 using ScreenManager;
 using UnityEngine;
-using UnityEngine.Android;
 using Utilities;
 
 namespace Commands.SignIn_SignOut
 {
     public class UserSignInCommand : ExecuteCommand
     {
-        public UserSignInCommand(string email, string password) : base(nameof(UserSignInCommand))
+        private readonly Action<bool> _callback;
+
+        public UserSignInCommand(string email, string password, Action<bool> callback) : base(nameof(UserSignInCommand))
         {
+            _callback = callback;
             UserParams.Add("email", email);
             UserParams.Add("password", password);
         }
@@ -26,15 +29,14 @@ namespace Commands.SignIn_SignOut
             if (error)
             {
                 Debug.Log(Recieve.GetString("error_text"));
+                _callback?.Invoke(false);
             }
             else
             {
-                // Context.UserModel.Permission = Recieve.GetString("permission");
-                PlayerPrefs.SetString("session", Recieve.GetString("session"));
-                PlayerPrefs.SetString("userId", Recieve.GetString("userId"));
                 Context.User.IsAuthorization = true;
                 Context.User.Id = PlayerPrefs.GetString("userId");
                 Context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);               
+                _callback?.Invoke(true);
             }
         }
     }

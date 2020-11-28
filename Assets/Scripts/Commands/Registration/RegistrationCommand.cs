@@ -1,4 +1,5 @@
-﻿using Commands.Base;
+﻿using System;
+using Commands.Base;
 using ScreenManager;
 using UnityEngine;
 using Utilities;
@@ -7,10 +8,12 @@ namespace Commands.Registration
 {
     public class RegistrationCommand : ExecuteCommand
     {
-        public RegistrationCommand(string firstName,string secondName,string email, string password) : base(nameof(RegistrationCommand))
+        private readonly Action<bool> _callback;
+
+        public RegistrationCommand(string login,string email, string password, Action<bool> callback) : base(nameof(RegistrationCommand))
         {
-            UserParams.Add("name",firstName);
-            UserParams.Add("secondName",secondName);
+            _callback = callback;
+            UserParams.Add("login",login);
             UserParams.Add("email",email );
             UserParams.Add("password", password);
         }
@@ -27,12 +30,11 @@ namespace Commands.Registration
             if (error)
             {
                 Debug.LogError(Recieve.GetString("error_text"));
+                _callback?.Invoke(false);
             }
             else
             {
-                PlayerPrefs.SetString("session", Recieve.GetString("session"));
-                PlayerPrefs.SetString("userId",  Recieve.GetString("userId"));
-                
+                _callback?.Invoke(true);
             }
         }
     }

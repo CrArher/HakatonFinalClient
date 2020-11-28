@@ -1,4 +1,5 @@
 using ScreenManager;
+using Screens.MainScreen;
 using Screens.Registration;
 using Screens.ScreenChanger;
 using Screens.SignIn;
@@ -41,6 +42,9 @@ namespace Screens.ScreenObserver
                     break;
                 case ScreenType.Registration:
                     new RegistrationGenerator().Generate(_context, _container.RegistrationComponent, _controllerCollection);
+                    break;
+                case ScreenType.MainScreen:
+                    new MainScreenGenerator().Generate(_context, _container.MainScreenComponent, _controllerCollection);
                     break;
             }
 

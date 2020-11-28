@@ -10,6 +10,7 @@ public class StartController : MonoBehaviour
     
     private void Awake()
     {
+        _context.Mono = this;
         new CommandGenerator().Generate(_context, _controllerCollection, GlobalContainer);
         new ScreenChangerGenerator().Generate(_context, _controllerCollection, GlobalContainer);
         

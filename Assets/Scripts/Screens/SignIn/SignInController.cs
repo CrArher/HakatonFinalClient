@@ -1,4 +1,5 @@
-﻿using ScreenManager;
+﻿using Commands.SignIn_SignOut;
+using ScreenManager;
 
 namespace Screens.SignIn
 {
@@ -27,12 +28,33 @@ namespace Screens.SignIn
 
         private void OnClickEnter()
         {
-            
+            if (string.IsNullOrEmpty(_component.EmailField.text) || string.IsNullOrEmpty(_component.PasswordField.text))
+            {
+                _component.WarnRoot.SetActive(true);
+            }
+            else
+            {
+                _context.CommandModel.AddCommand(new UserSignInCommand(_component.EmailField.text, _component.PasswordField.text, Callback));
+            }
         }
 
         private void OnClickRegister()
         {
             _context.ScreenChangerModel.SwitchScreen(ScreenType.Registration);
+            
+            
+        }
+
+        private void Callback(bool value)
+        {
+            if (value)
+            {
+                _context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);
+            }
+            else
+            {
+                _component.WarnRoot.SetActive(true);
+            }
         }
     }
 }

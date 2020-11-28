@@ -27,7 +27,7 @@ namespace Commands.Base
                 form.AddField(param.Key, param.Value);
             }
             
-            _getData = new WWW("http://25.57.84.220:8000/game_request", form);
+            _getData = new WWW("http://93.95.97.122:8000/game_request", form);
 
             yield return _getData;
             if (_getData.error != null)
