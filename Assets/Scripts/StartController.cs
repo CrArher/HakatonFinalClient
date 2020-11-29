@@ -1,5 +1,7 @@
 ﻿using BurgerMenu;
 using Commands;
+using Commands.SignIn_SignOut;
+using ScreenManager;
 using Screens.ScreenChanger;
 using UnityEngine;
 
@@ -17,5 +19,11 @@ public class StartController : MonoBehaviour
         new BurgerMenuGenerator().Generate(_context,_controllerCollection,GlobalContainer);
 
         _controllerCollection.Activate();
+
+        if (!string.IsNullOrEmpty(PlayerPrefs.GetString("userId")))
+        {
+            _context.CommandModel.AddCommand(new UserConnectionCommand(PlayerPrefs.GetString("userId")));
+            _context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);
+        }
     }
 }

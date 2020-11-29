@@ -8,10 +8,12 @@ namespace Commands.SignIn_SignOut
 {
     public class UserSignInCommand : ExecuteCommand
     {
+        private readonly string _email;
         private readonly Action<bool> _callback;
 
         public UserSignInCommand(string email, string password, Action<bool> callback) : base(nameof(UserSignInCommand))
         {
+            _email = email;
             _callback = callback;
             UserParams.Add("email", email);
             UserParams.Add("password", password);
@@ -34,8 +36,9 @@ namespace Commands.SignIn_SignOut
             else
             {
                 Context.User.IsAuthorization = true;
-                Context.User.Id = PlayerPrefs.GetString("userId");
-                Context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);               
+                Context.User.Id = _email;
+                PlayerPrefs.SetString("userId", _email);
+                Context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);
                 _callback?.Invoke(true);
             }
         }
