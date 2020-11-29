@@ -40,9 +40,7 @@ namespace Screens.MainScreen
             var color = _component.DefaultBackground.color;
             color.a = 0.9f;
             _component.DefaultBackground.color = color;
-            OnClickRecordScreen();
-
-
+            _context.RecordingModel.OnShowOrHide(false);
             _component.Image.texture = _model.Image;
             _component.BackGround.texture = _model.Image;
             _component.author.text = _model.Author;
