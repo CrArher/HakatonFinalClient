@@ -20,6 +20,12 @@ namespace Commands.Registration
         protected override void CallBack()
         {
             var datas = Recieve.GetArrayObject("data");
+            Context.MainScreenModel.Searches.Clear();
+            foreach (string data in datas)
+            {
+                Context.MainScreenModel.Searches.Add(data);
+            }
+            Context.MainScreenModel.OnSearch();
             Debug.Log(datas.Count);
         }
     }

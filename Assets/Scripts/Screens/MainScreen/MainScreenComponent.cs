@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Screens.RecordingScreen;
 using Screens.ScreenObserver;
 using TMPro;
@@ -9,6 +10,48 @@ namespace Screens.MainScreen
 {
     public class MainScreenComponent : MonoBehaviour, ISceneContainer
     {
+        public GameObject SearchPrefab;
+        public Transform SearchRoot;
+        public GameObject root;
+
+        private List<GameObject> _gameObjects = new List<GameObject>();
+        public TextMeshProUGUI CreateSearchedTreck()
+        {
+            var go = Instantiate(SearchPrefab, SearchRoot);
+            _gameObjects.Add(go);
+            return go.GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        public void Clear()
+        {
+            foreach (var go in _gameObjects)
+            {
+                Destroy(go);
+            }
+            _gameObjects.Clear();
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         public TMP_InputField FindField;
         

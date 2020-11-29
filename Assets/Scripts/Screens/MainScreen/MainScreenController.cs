@@ -31,6 +31,25 @@ namespace Screens.MainScreen
             _component.FindField.onValueChanged.AddListener(OnSubmitFind);
             _component.Yo.onClick.AddListener(OnSubmitYo);
             _model.Find += OnFind;
+            _model.Search += OnSearch;
+        }
+
+        private void OnSearch()
+        {
+            _component.Clear();
+            if (_model.Searches.Count == 0)
+            {
+                _component.root.SetActive(false);
+            }
+            else
+            {
+                _component.root.SetActive(true);
+            }
+            foreach (var search in _model.Searches)
+            {
+                var component = _component.CreateSearchedTreck();
+                component.text = search;
+            }
         }
 
         private void OnSubmitFind(string arg0)
