@@ -22,7 +22,9 @@ namespace Screens.MainScreen
         public TextMeshProUGUI album;
         public GameObject Root;
         public TextMeshProUGUI link;
-
+        
+        public GameObject RootYo;
+        public Button Yo;
 
         private float period = 0.02f;
         private float time;

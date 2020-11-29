@@ -38,7 +38,9 @@ namespace Commands.SignIn_SignOut
                 Context.User.IsAuthorization = true;
                 Context.User.Id = _email;
                 PlayerPrefs.SetString("userId", _email);
+                var user = Recieve.GetNode("user");
                 Context.ScreenChangerModel.SwitchScreen(ScreenType.MainScreen);
+                Context.User.Login = user.GetString("id");
                 _callback?.Invoke(true);
             }
         }

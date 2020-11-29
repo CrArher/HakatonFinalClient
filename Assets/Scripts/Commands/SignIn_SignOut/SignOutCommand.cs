@@ -31,8 +31,6 @@ namespace Commands.SignIn_SignOut
             {
                 if (!Recieve.GetBool("authorisation"))
                 {
-                    PlayerPrefs.SetString("session", string.Empty);
-                    PlayerPrefs.SetString("userId", string.Empty);
                     Context.User.IsAuthorization = false;
                     Context.User.Id = PlayerPrefs.GetString("userId");
                     Context.ScreenChangerModel.SwitchScreen(ScreenType.SignIn);   

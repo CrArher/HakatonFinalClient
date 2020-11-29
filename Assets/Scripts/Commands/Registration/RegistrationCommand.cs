@@ -8,11 +8,13 @@ namespace Commands.Registration
 {
     public class RegistrationCommand : ExecuteCommand
     {
+        private readonly string _login;
         private readonly string _email;
         private readonly Action<bool> _callback;
 
         public RegistrationCommand(string login,string email, string password, Action<bool> callback) : base(nameof(RegistrationCommand))
         {
+            _login = login;
             _email = email;
             _callback = callback;
             UserParams.Add("login",login);
@@ -37,6 +39,7 @@ namespace Commands.Registration
             else
             {
                 Context.User.IsAuthorization = true;
+                Context.User.Login = _login;
                 PlayerPrefs.SetString("userId", _email);
                 Context.User.Id = _email;
                 _callback?.Invoke(true);

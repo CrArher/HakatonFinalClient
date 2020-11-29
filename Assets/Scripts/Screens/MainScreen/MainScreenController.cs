@@ -1,4 +1,5 @@
 ﻿using Commands;
+using Commands.Registration;
 using ScreenManager;
 
 namespace Screens.MainScreen
@@ -19,20 +20,36 @@ namespace Screens.MainScreen
         public void Deactivate()
         {
             _component.RecordScreenButton.onClick.RemoveListener(OnClickRecordScreen);
-            _component.FindField.onSubmit.RemoveListener(OnSubmitFind);
+            _component.FindField.onValueChanged.RemoveListener(OnSubmitFind);
+            _component.Yo.onClick.RemoveListener(OnSubmitYo);
             _model.Find -= OnFind;
         }
 
         public void Activate()
         {
             _component.RecordScreenButton.onClick.AddListener(OnClickRecordScreen);
-            _component.FindField.onSubmit.AddListener(OnSubmitFind);
+            _component.FindField.onValueChanged.AddListener(OnSubmitFind);
+            _component.Yo.onClick.AddListener(OnSubmitYo);
             _model.Find += OnFind;
         }
 
         private void OnSubmitFind(string arg0)
         {
-            _context.CommandModel.AddCommand(new GetYouTubeVideoInfoCommand(arg0));
+            if (arg0.Contains("youtube.com") || arg0.Contains("youtu.be"))
+            {
+                _component.RootYo.SetActive(true);
+            }
+            else
+            {
+                _context.CommandModel.AddCommand(new FindTrackCommand(arg0));
+                _component.RootYo.SetActive(false);
+            }
+        }
+
+        private void OnSubmitYo()
+        {
+            _context.CommandModel.AddCommand(new GetYouTubeVideoInfoCommand(_component.FindField.text));
+            _component.FindField.text = "";
         }
 
         private void OnFind()
@@ -51,6 +68,10 @@ namespace Screens.MainScreen
             if (!string.IsNullOrEmpty(_model.Label))
             {
                 _component.DMCa.text = "DMCA";
+            }
+            else
+            {
+                _component.DMCa.text = "FREE";
             }
 
             _component.Root.SetActive(true);
