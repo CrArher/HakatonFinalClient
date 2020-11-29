@@ -5,24 +5,17 @@ using UnityEngine.UI;
 
 namespace BurgerMenu
 {
-    public class BurgerMenuComponent : MonoBehaviour, IPointerDownHandler
+    public class BurgerMenuComponent : MonoBehaviour
     {
+        public GameObject MenuRoot;
         private float speed = 30f;
         private bool Jumping;
         private int jump = 0;
         private float period = 0.03f;
         private float time;
-        private bool OnStart;
+        public bool OnStart;
         public Image Root;
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            OnStart = !OnStart;
-            if (OnStart)
-            {
-                Root.gameObject.SetActive(true);
-            }
-        }
+        public Button Show;
 
         public void Update()
         {

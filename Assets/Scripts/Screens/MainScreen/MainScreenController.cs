@@ -60,8 +60,6 @@ namespace Screens.MainScreen
             if (_component.IsRecord)
             {
                 _context.BurgerMenuModel.OnHide();
-                _component.SearchesHistoryRoot.gameObject.SetActive(false);
-                _component.FreePlayLists.gameObject.SetActive(false);
                 _component.FindField.gameObject.SetActive(false);
             }
             else

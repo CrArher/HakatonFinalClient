@@ -1,4 +1,5 @@
 ﻿using ScreenManager;
+using UnityEngine;
 
 namespace BurgerMenu
 {
@@ -22,13 +23,28 @@ namespace BurgerMenu
         public void Activate()
         {
             _context.ScreenChangerModel.ChangedScreen += OnChangedScreen;
+            _component.Show.onClick.AddListener(OnStarted);
+        }
+
+        private void OnStarted()
+        {
+            _component.OnStart = !_component.OnStart;
+            if (_component.OnStart)
+            {
+                _component.Root.gameObject.SetActive(true);
+            }
         }
 
         private void OnChangedScreen()
         {
-            if (_context.ScreenChangerModel.CurrentScreen != ScreenType.SignIn && _context.ScreenChangerModel.CurrentScreen != ScreenType.Registration)
+            if (_context.ScreenChangerModel.CurrentScreen != ScreenType.SignIn &&
+                _context.ScreenChangerModel.CurrentScreen != ScreenType.Registration)
             {
-                _component.gameObject.SetActive(false);
+                _component.MenuRoot.SetActive(true);
+            }
+            else
+            {
+                _component.MenuRoot.SetActive(false);
             }
         }
     }

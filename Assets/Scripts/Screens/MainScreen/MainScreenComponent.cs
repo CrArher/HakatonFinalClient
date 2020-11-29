@@ -9,10 +9,9 @@ namespace Screens.MainScreen
 {
     public class MainScreenComponent : MonoBehaviour, ISceneContainer
     {
-        public GameObject SearchesHistoryRoot;
-        public GameObject FreePlayLists;
 
         public TMP_InputField FindField;
+
 
         public RawImage BackGround;
         public RawImage Image;
@@ -39,11 +38,14 @@ namespace Screens.MainScreen
                     time = period;
                     if (RecordScreenButton.transform.localScale.x > -1)
                     {
+                        
                         var scale = RecordScreenButton.transform.localScale;
                         scale.x -= 0.1f;
                         scale.y -= 0.1f;
                         RecordScreenButton.transform.localScale = scale;
                     }
+                    
+
                 }
             }
             else
@@ -51,11 +53,8 @@ namespace Screens.MainScreen
                 if (time <= 0)
                 {
                     if (this.GetComponent<RecordingComponent>().root.transform.position.y < -900 &&
-                        !SearchesHistoryRoot.gameObject.activeSelf && !FreePlayLists.gameObject.activeSelf &&
                         !FindField.gameObject.activeSelf)
                     {
-                        SearchesHistoryRoot.gameObject.SetActive(true);
-                        FreePlayLists.gameObject.SetActive(true);
                         FindField.gameObject.SetActive(true);
                     }
 

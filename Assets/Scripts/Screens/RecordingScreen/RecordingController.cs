@@ -128,6 +128,32 @@ namespace Screens.RecordingScreen
                             _component.StartCoroutine(deezer.GetTexture());
                         }
 
+
+                        if (deezer != null)
+                        {
+                            _context.MainScreenModel.Album = deezer.Album;
+                            _context.MainScreenModel.Author = deezer.Artist;
+                            _context.MainScreenModel.Image = deezer.Image;
+                            _context.MainScreenModel.Link = deezer.TrackLink;
+                            _context.MainScreenModel.Title = deezer.Title;
+                        }
+                        else if (apple != null)
+                        {
+                            _context.MainScreenModel.Album = apple.Album;
+                            _context.MainScreenModel.Author = apple.Artist;
+                            _context.MainScreenModel.Image = apple.Image;
+                            _context.MainScreenModel.Link = apple.TrackLink;
+                            _context.MainScreenModel.Title = apple.Title;
+                        }
+                        else if (spotify != null)
+                        {
+                            _context.MainScreenModel.Album = spotify.Album;
+                            _context.MainScreenModel.Author = spotify.Artist;
+                            _context.MainScreenModel.Image = spotify.Image;
+                            _context.MainScreenModel.Link = spotify.TrackLink;
+                            _context.MainScreenModel.Title = spotify.Title;
+                        }
+
                         if (resultData.ContainsKey("spotify"))
                         {
                             spotify = new Spotify((Dictionary<string, object>) resultData.GetNode("spotify"));
@@ -140,30 +166,6 @@ namespace Screens.RecordingScreen
                             _component.StartCoroutine(spotify.GetTexture());
                         }
 
-                        if (apple != null)
-                        {
-                            _context.MainScreenModel.Album = apple.Album;
-                            _context.MainScreenModel.Author = apple.Artist;
-                            _context.MainScreenModel.Image = apple.Image;
-                            _context.MainScreenModel.Link = apple.TrackLink;
-                            _context.MainScreenModel.Title = apple.Title;
-                        }
-                        else if (deezer != null)
-                        {
-                            _context.MainScreenModel.Album = deezer.Album;
-                            _context.MainScreenModel.Author = deezer.Artist;
-                            _context.MainScreenModel.Image = deezer.Image;
-                            _context.MainScreenModel.Link = deezer.TrackLink;
-                            _context.MainScreenModel.Title = deezer.Title;
-                        }
-                        else if (spotify != null)
-                        {
-                            _context.MainScreenModel.Album = spotify.Album;
-                            _context.MainScreenModel.Author = spotify.Artist;
-                            _context.MainScreenModel.Image = spotify.Image;
-                            _context.MainScreenModel.Link = spotify.TrackLink;
-                            _context.MainScreenModel.Title = spotify.Title;
-                        }
                         _context.MainScreenModel.OnFind();
                     }
                 }
