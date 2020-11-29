@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -18,7 +19,7 @@ namespace Screens.RecordingScreen.Platforms
        public string ImageUrl { get; protected set; }
        public Texture2D Image { get; set; }
        
-       public IEnumerator GetTexture() 
+       public IEnumerator GetTexture(Action<Platform> action) 
        {
            var www = UnityWebRequestTexture.GetTexture(ImageUrl);
            
@@ -32,6 +33,7 @@ namespace Screens.RecordingScreen.Platforms
            {
                Image = ((DownloadHandlerTexture)www.downloadHandler).texture;
            }
+           action?.Invoke(this);
        }
     }
 }

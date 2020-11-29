@@ -79,7 +79,7 @@ namespace Screens.RecordingScreen
             }
         }
 
-        private void EndFind(string data)
+        private async void EndFind(string data)
         {
             var json = (Dictionary<string, object>) JSON.Parse(data);
             if (json.GetString("status") == "success")
@@ -113,7 +113,7 @@ namespace Screens.RecordingScreen
                             apple.Album = album;
                             apple.Artist = artist;
                             apple.TrackLink = trackLink;
-                            _component.StartCoroutine(apple.GetTexture());
+                            _component.StartCoroutine(apple.GetTexture(StartA));
                         }
 
                         if (resultData.ContainsKey("deezer"))
@@ -125,33 +125,7 @@ namespace Screens.RecordingScreen
                             deezer.Album = album;
                             deezer.Artist = artist;
                             deezer.TrackLink = trackLink;
-                            _component.StartCoroutine(deezer.GetTexture());
-                        }
-
-
-                        if (deezer != null)
-                        {
-                            _context.MainScreenModel.Album = deezer.Album;
-                            _context.MainScreenModel.Author = deezer.Artist;
-                            _context.MainScreenModel.Image = deezer.Image;
-                            _context.MainScreenModel.Link = deezer.TrackLink;
-                            _context.MainScreenModel.Title = deezer.Title;
-                        }
-                        else if (apple != null)
-                        {
-                            _context.MainScreenModel.Album = apple.Album;
-                            _context.MainScreenModel.Author = apple.Artist;
-                            _context.MainScreenModel.Image = apple.Image;
-                            _context.MainScreenModel.Link = apple.TrackLink;
-                            _context.MainScreenModel.Title = apple.Title;
-                        }
-                        else if (spotify != null)
-                        {
-                            _context.MainScreenModel.Album = spotify.Album;
-                            _context.MainScreenModel.Author = spotify.Artist;
-                            _context.MainScreenModel.Image = spotify.Image;
-                            _context.MainScreenModel.Link = spotify.TrackLink;
-                            _context.MainScreenModel.Title = spotify.Title;
+                            _component.StartCoroutine(deezer.GetTexture(StartD));
                         }
 
                         if (resultData.ContainsKey("spotify"))
@@ -163,15 +137,42 @@ namespace Screens.RecordingScreen
                             spotify.Album = album;
                             spotify.Artist = artist;
                             spotify.TrackLink = trackLink;
-                            _component.StartCoroutine(spotify.GetTexture());
+                            _component.StartCoroutine(spotify.GetTexture(StartS));
                         }
-
-                        _context.MainScreenModel.OnFind();
                     }
                 }
             }
         }
 
+        private void StartD(Platform platform)
+        {
+            _context.MainScreenModel.Album = platform.Album;
+            _context.MainScreenModel.Author = platform.Artist;
+            _context.MainScreenModel.Image = platform.Image;
+            _context.MainScreenModel.Link = platform.TrackLink;
+            _context.MainScreenModel.Title = platform.Title;
+
+            _context.MainScreenModel.OnFind();
+        }
+        
+        private void StartA(Platform platform)
+        {
+            _context.MainScreenModel.Album = platform.Album;
+            _context.MainScreenModel.Author = platform.Artist;
+            _context.MainScreenModel.Link = platform.TrackLink;
+            _context.MainScreenModel.Title = platform.Title;
+
+            _context.MainScreenModel.OnFind();
+        }
+        private void StartS(Platform platform)
+        {
+            _context.MainScreenModel.Album = platform.Album;
+            _context.MainScreenModel.Author = platform.Artist;
+            _context.MainScreenModel.Link = platform.TrackLink;
+            _context.MainScreenModel.Title = platform.Title;
+
+            _context.MainScreenModel.OnFind();
+        }
         private void OnEndTimer()
         {
             Debug.Log("END TIMER");
