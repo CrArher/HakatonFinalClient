@@ -12,6 +12,7 @@ namespace Screens.MainScreen
         public string Author;
         public string Album;
         public string Link;
+        public string Label;
 
         public void OnFind()
         {

@@ -47,13 +47,13 @@ namespace Screens.MainScreen
             _component.album.text = _model.Album;
             _component.link.text = _model.Link;
             _component.title.text = _model.Title;
+            _component.Label.text = _model.Label;
+            if (!string.IsNullOrEmpty(_model.Label))
+            {
+                _component.DMCa.text = "DMCA";
+            }
 
-            _component.author.gameObject.SetActive(true);
-            _component.album.gameObject.SetActive(true);
-            _component.link.gameObject.SetActive(true);
-            _component.title.gameObject.SetActive(true);
-            _component.BackGround.gameObject.SetActive(true);
-            _component.Image.gameObject.SetActive(true);
+            _component.Root.SetActive(true);
         }
 
         private void OnClickRecordScreen()

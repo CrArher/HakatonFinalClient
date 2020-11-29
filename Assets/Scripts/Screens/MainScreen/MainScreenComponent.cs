@@ -20,6 +20,7 @@ namespace Screens.MainScreen
         public TextMeshProUGUI author;
         public TextMeshProUGUI title;
         public TextMeshProUGUI album;
+        public GameObject Root;
         public TextMeshProUGUI link;
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Timers;
+using Commands.Registration;
 using Lib.fastJSON;
 using Screens.RecordingScreen.Platforms;
 using UnityEngine;
@@ -126,6 +127,7 @@ namespace Screens.RecordingScreen
                         {
                             deezer = new Deezer((Dictionary<string, object>) resultData.GetNode("deezer"));
 
+                            _context.CommandModel.AddCommand(new AddTrackToHistoryCommand(JSON.ToJSON(deezer)));
                             deezer.Label = label;
                             deezer.Title = title;
                             deezer.Album = album;
@@ -157,6 +159,7 @@ namespace Screens.RecordingScreen
             _context.MainScreenModel.Image = platform.Image;
             _context.MainScreenModel.Link = platform.TrackLink;
             _context.MainScreenModel.Title = platform.Title;
+            _context.MainScreenModel.Label = platform.Label;
 
             _context.MainScreenModel.OnFind();
         }
@@ -167,6 +170,7 @@ namespace Screens.RecordingScreen
             _context.MainScreenModel.Author = platform.Artist;
             _context.MainScreenModel.Link = platform.TrackLink;
             _context.MainScreenModel.Title = platform.Title;
+            _context.MainScreenModel.Label = platform.Label;
 
             _context.MainScreenModel.OnFind();
         }
@@ -176,6 +180,7 @@ namespace Screens.RecordingScreen
             _context.MainScreenModel.Author = platform.Artist;
             _context.MainScreenModel.Link = platform.TrackLink;
             _context.MainScreenModel.Title = platform.Title;
+            _context.MainScreenModel.Label = platform.Label;
 
             _context.MainScreenModel.OnFind();
         }
