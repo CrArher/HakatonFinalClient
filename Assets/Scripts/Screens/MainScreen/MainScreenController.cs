@@ -38,9 +38,10 @@ namespace Screens.MainScreen
         private void OnFind()
         {
             var color = _component.DefaultBackground.color;
-            color.a -= 0.2f;
+            color.a = 0.9f;
             _component.DefaultBackground.color = color;
             OnClickRecordScreen();
+
 
             _component.Image.texture = _model.Image;
             _component.BackGround.texture = _model.Image;
@@ -49,6 +50,10 @@ namespace Screens.MainScreen
             _component.link.text = _model.Link;
             _component.title.text = _model.Title;
 
+            _component.author.gameObject.SetActive(true);
+            _component.album.gameObject.SetActive(true);
+            _component.link.gameObject.SetActive(true);
+            _component.title.gameObject.SetActive(true);
             _component.BackGround.gameObject.SetActive(true);
             _component.Image.gameObject.SetActive(true);
         }
