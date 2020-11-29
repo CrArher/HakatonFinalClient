@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Screens: {fileID: 281346386}
   ScreensContainer: {fileID: 281346385}
-  BurgerMenuComponent: {fileID: 1802358855}
+  BurgerMenuComponent: {fileID: 582185323}
 --- !u!82 &281346388
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3618,13 +3618,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 582185322}
+  - component: {fileID: 582185323}
   m_Layer: 5
   m_Name: BurgerMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582185322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3646,6 +3647,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &582185323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582185321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147e2b807a5a4fe89db38dffc2139f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuRoot: {fileID: 582185321}
+  OnStart: 0
+  Root: {fileID: 93746015}
+  Show: {fileID: 1802358852}
 --- !u!1 &582993702
 GameObject:
   m_ObjectHideFlags: 0
@@ -10613,7 +10630,6 @@ GameObject:
   - component: {fileID: 1802358854}
   - component: {fileID: 1802358853}
   - component: {fileID: 1802358852}
-  - component: {fileID: 1802358855}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -10720,19 +10736,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802358850}
   m_CullTransparentMesh: 0
---- !u!114 &1802358855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802358850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147e2b807a5a4fe89db38dffc2139f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Root: {fileID: 93746015}
 --- !u!1 &1844972496
 GameObject:
   m_ObjectHideFlags: 0
