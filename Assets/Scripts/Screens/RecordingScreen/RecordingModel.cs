@@ -8,6 +8,8 @@ namespace Screens.RecordingScreen
         public event Action Show;
         public event Action Hide;
 
+        public event Action<string> YouTube;
+
         public bool IsRecording;
         public AudioClip clip;
 
@@ -32,6 +34,11 @@ namespace Screens.RecordingScreen
                 Hide?.Invoke();
             }
             
+        }
+
+        public void OnYouTube(string str)
+        {
+            YouTube?.Invoke(str);
         }
     }
 }

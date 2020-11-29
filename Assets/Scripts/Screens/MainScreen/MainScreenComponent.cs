@@ -11,8 +11,9 @@ namespace Screens.MainScreen
     {
 
         public TMP_InputField FindField;
-
-
+        
+        public TextMeshProUGUI DMCa;
+        public TextMeshProUGUI Label;
         public RawImage BackGround;
         public RawImage Image;
         public Image DefaultBackground;

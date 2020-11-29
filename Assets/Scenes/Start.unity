@@ -11066,6 +11066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FindField: {fileID: 1467509227}
+  DMCa: {fileID: 0}
+  Label: {fileID: 0}
   BackGround: {fileID: 160712691}
   Image: {fileID: 1714413527}
   DefaultBackground: {fileID: 987065398}

@@ -103,7 +103,7 @@ namespace Screens.RecordingScreen
                 {
                     Record.interactable = false;
                     var pos = root.transform.localPosition;
-                    pos.y += GetComponent<RectTransform>().rect.height * 0.007f;
+                    pos.y += GetComponent<RectTransform>().rect.height * 0.006f;
                     root.transform.localPosition = pos;
                 }
                 else if (!Record.interactable)
@@ -123,7 +123,7 @@ namespace Screens.RecordingScreen
                 {
                     Record.interactable = false;
                     var pos = root.transform.localPosition;
-                    pos.y -= GetComponent<RectTransform>().rect.height * 0.007f;
+                    pos.y -= GetComponent<RectTransform>().rect.height * 0.006f;
                     root.transform.localPosition = pos;
                 }
                 else if (!Record.interactable)

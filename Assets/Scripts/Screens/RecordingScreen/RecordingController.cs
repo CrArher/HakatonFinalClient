@@ -33,8 +33,14 @@ namespace Screens.RecordingScreen
         {
             _model.Hide += OnHide;
             _model.Show += OnShow;
+            _model.YouTube += OnYouTube;
             _component.Record.onClick.AddListener(OnRecord);
             _component.EndTimer += OnEndTimer;
+        }
+
+        private void OnYouTube(string str)
+        {
+            EndFind(str);
         }
 
         private void OnShow()

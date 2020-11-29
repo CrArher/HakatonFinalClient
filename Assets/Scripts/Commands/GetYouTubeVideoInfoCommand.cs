@@ -22,7 +22,7 @@ namespace Commands
 
         protected override void CallBack()
         {
-            Debug.Log(Recieve.GetString("callback"));
+            Context.RecordingModel.OnYouTube(Recieve.GetString("callback"));
         }
     }
 }
